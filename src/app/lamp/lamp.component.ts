@@ -4,34 +4,36 @@ import {Lamp} from "../lamp";
 @Component({
   selector: 'app-lamp',
   host: {
-    class: 'column'
+    class: 'card'
   },
   inputs: ['lamp'],
   template: `  
-    <div class="ui segment">   
-     
-      <div>
-        <div class="ui header">{{lamp.lampNaam}}</div>
-      </div>
-      
-      <div class="content">
-        <div class="ui image small">
-          <img src="/assets/incandescent-light-bulb.png">
+   
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <div class="ui two buttons">
+              <div class="ui basic green button inverted" (click)="zetAan()">Aan</div>
+              <div class="ui basic red button inverted" (click)="zetUit()">Uit</div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="meta">
-        Setup: {{lamp.setup}}
-      </div>
-      
-      <div >
-        <div class="ui two buttons">
-          <div class="ui basic green button" (click)="zetAan()">Aan</div>
-          <div class="ui basic red button" (click)="zetUit()">Uit</div>
-        </div>
-      </div>
-      
+      <img src="/assets/incandescent-light-bulb.png">
     </div>
+    
+    <div class="content">
+      <a class="header">{{lamp.lampNaam}}</a>
+    </div>
+    
+    <div class="extra content">
+      <a (click)="toonConfig()">
+        <i class="configure icon"></i>
+        {{lamp.setup}}
+      </a>
+    </div>
+    
   `,
   styleUrls: ['./lamp.component.css']
 })
@@ -48,6 +50,11 @@ export class LampComponent {
   zetUit(): boolean {
     console.log(`zet lamp ${this.lamp.lampNaam} uit`);
     this.lamp.aan = false;
+    return false;
+  }
+
+  toonConfig(): boolean {
+    console.log(`configuratie van ${this.lamp.lampNaam}`);
     return false;
   }
 

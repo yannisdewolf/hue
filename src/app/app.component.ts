@@ -13,11 +13,15 @@ import {Lamp} from "./lamp";
         </div>
         
         
-          <div class="ui three column row">
-            <app-lamp 
-                *ngFor="let mlamp of lampen"
-                [lamp]="mlamp">     
-            </app-lamp>
+          <div class="ui one column row">
+            <div class="column">
+              <div class="ui special cards">
+                <app-lamp 
+                    *ngFor="let mlamp of lampen"
+                    [lamp]="mlamp">     
+                </app-lamp>
+              </div>
+            </div>
           </div>  
       </div>
       
