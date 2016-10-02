@@ -18,7 +18,8 @@ import {Lamp} from "./lamp";
               <div class="ui special cards">
                 <app-lamp 
                     *ngFor="let mlamp of lampen"
-                    [lamp]="mlamp">     
+                    [lamp]="mlamp"
+                    [configuraties]=configuraties>     
                 </app-lamp>
               </div>
             </div>
@@ -32,16 +33,23 @@ export class AppComponent {
 
   lampen: Lamp[];
 
+  configuraties: [string];
+
   constructor() {
     this.lampen = [
-      new Lamp("gang", false, "gedimd"),
+      new Lamp("Gang", false),
       new Lamp("Keuken", false),
       new Lamp("Eetkamer", false)
     ];
+
+    this.configuraties = [
+      'gedimd', 'wit'
+    ]
   }
 
-  addArticle(title: HTMLInputElement, link: HTMLInputElement){
-    console.log(`title: ${title.value} link: ${link.value}`);
+  addconfiguration(newconfig: string) {
+
   }
+
 
 }

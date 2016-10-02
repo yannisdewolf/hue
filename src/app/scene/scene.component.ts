@@ -31,17 +31,14 @@ import { Component } from '@angular/core';
 })
 export class SceneComponent {
 
-  lampen: string[];
+
   name: string;
   setupstring: string;
   description: string;
 
   constructor() {
-    this.lampen = ["gang", "eetkamer", "keuken"]
+
   }
-
-
-
 
 
   addSetup(name: HTMLInputElement, setupstring: HTMLInputElement, description: HTMLInputElement) {

@@ -6,7 +6,7 @@ import {Lamp} from "../lamp";
   host: {
     class: 'card'
   },
-  inputs: ['lamp'],
+  inputs: ['lamp', 'configuraties'],
   template: `  
    
     <div class="blurring dimmable image">
@@ -37,6 +37,17 @@ import {Lamp} from "../lamp";
     </div>
     
     <div class="extra content">
+      Kies configuratie
+      
+      <div class="field">
+          <select class="ui fluid dropdown" #t (change)="callType(t.value)">
+            <option value="">Configuratie</option>
+            <option *ngFor="let mlamp of configuraties" [value]="mlamp">{{mlamp}}</option>
+          </select>
+        </div>
+    </div>
+    
+    <div class="extra content">
       <a (click)="toonConfig()">
         <i class="configure icon"></i>
         {{lamp.setup}}
@@ -49,6 +60,11 @@ import {Lamp} from "../lamp";
 export class LampComponent {
 
   lamp: Lamp;
+  configuraties: [string];
+
+  constructor() {
+
+  }
 
   zetAan(): boolean {
     console.log(`zet lamp ${this.lamp.lampNaam} aan`);
@@ -64,6 +80,12 @@ export class LampComponent {
 
   toonConfig(): boolean {
     console.log(`configuratie van ${this.lamp.lampNaam}`);
+    return false;
+  }
+
+  callType(value: string) : boolean {
+    this.lamp.setup = value;
+    console.log(value);
     return false;
   }
 
