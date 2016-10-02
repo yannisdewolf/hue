@@ -20,7 +20,12 @@ import {Lamp} from "../lamp";
           </div>
         </div>
       </div>
-      <img src="/assets/incandescent-light-bulb.png">
+      <div *ngIf="lamp.aan" >
+        <img class="ui medium image" src="/assets/incandescent-light-bulb-on.png">
+      </div>
+      <div *ngIf="!lamp.aan">
+        <img class="ui medium image" src="/assets/incandescent-light-bulb.png">
+      </div>
     </div>
     
     <div class="content">
