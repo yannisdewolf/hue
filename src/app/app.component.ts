@@ -4,44 +4,21 @@ import {Lamp} from "./lamp";
 @Component({
   selector: 'app-root',
   template: `
-    
-
     <div class="ui main container">
 
-      <div class="ui segments">
+      <div class="ui grid">
        
-        <div class="ui segment">
+        <div class="ui one column row">
           <app-scene></app-scene>
         </div>
         
-        <div class="ui segment">
-          <div class="ui three column grid">
+        
+          <div class="ui three column row">
             <app-lamp 
                 *ngFor="let mlamp of lampen"
                 [lamp]="mlamp">     
             </app-lamp>
           </div>  
-        </div>
-        
-        <div class="ui segment">
-          <div class="ui three column grid">
-            <div class="column">
-              <div class="ui segment">
-                <img>
-              </div>
-            </div>
-            <div class="column">
-              <div class="ui segment">
-                <img>
-              </div>
-            </div>
-            <div class="column">
-              <div class="ui segment">
-                <img>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       
      </div>

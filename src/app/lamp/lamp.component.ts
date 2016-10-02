@@ -3,27 +3,28 @@ import {Lamp} from "../lamp";
 
 @Component({
   selector: 'app-lamp',
-
+  host: {
+    class: 'column'
+  },
   inputs: ['lamp'],
   template: `  
-  <div class="column">
     <div class="ui segment">   
      
       <div>
-        <div class="header">{{lamp.lampNaam}}</div>
+        <div class="ui header">{{lamp.lampNaam}}</div>
       </div>
       
-      <div>
-        <div class="ui image small circular">
+      <div class="content">
+        <div class="ui image small">
           <img src="/assets/incandescent-light-bulb.png">
         </div>
       </div>
       
-      <div>
+      <div class="meta">
         Setup: {{lamp.setup}}
       </div>
       
-      <div>
+      <div >
         <div class="ui two buttons">
           <div class="ui basic green button" (click)="zetAan()">Aan</div>
           <div class="ui basic red button" (click)="zetUit()">Uit</div>
@@ -31,7 +32,6 @@ import {Lamp} from "../lamp";
       </div>
       
     </div>
-  </div>
   `,
   styleUrls: ['./lamp.component.css']
 })

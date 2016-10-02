@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-scene',
+  host: {
+    class: 'column'
+  },
   template: `
-    <form class="ui form">
+    <form class="ui clearing segment form">
         <h3 class="ui header">Configuratie</h3>
              
         <div class="field">
@@ -31,7 +34,7 @@ import { Component } from '@angular/core';
           <input name="omschrijving" #newDescription />
         </div>
         
-        <button class="ui positive button" (click)="addSetup(newNaam, newSetupString, newDescription)">Klik hierop</button>
+        <div class="ui positive button right floated" (click)="addSetup(newNaam, newSetupString, newDescription)">Bewaar</div>
       </form>
   `,
   styleUrls: ['./scene.component.css']
