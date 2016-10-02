@@ -13,9 +13,13 @@ import {Lamp} from "../lamp";
       <div class="ui dimmer">
         <div class="content">
           <div class="center">
-            <div class="ui two buttons">
-              <div class="ui basic green button inverted" (click)="zetAan()">Aan</div>
-              <div class="ui basic red button inverted" (click)="zetUit()">Uit</div>
+            <div class="ui one buttons">
+              <div *ngIf="lamp.aan" >
+                <div class="ui basic red button inverted" (click)="zetUit()">Uit</div>
+              </div>
+              <div *ngIf="!lamp.aan">
+                <div class="ui basic green button inverted" (click)="zetAan()">Aan</div>
+              </div>
             </div>
           </div>
         </div>
