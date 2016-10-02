@@ -10,28 +10,18 @@ import { Component } from '@angular/core';
         <h3 class="ui header">Configuratie</h3>
              
         <div class="field">
-          <label>Lamp</label>
-          <select class="ui fluid dropdown">
-            <option value="">Lamp</option>
-            <option value="gang">Gang</option>
-            <option value="eetkamer">Eetkamer</option>
-            <option value="keuken">Keuken</option>
-          </select>
-        </div>
-        
-        <div class="field">
           <label for="title">Naam:</label>
           <input name="title" #newNaam>
         </div>
         
         <div class="field">
-          <label for="link">Configuratie:</label>
-          <input name="link" #newSetupString/>
+          <label for="omschrijving">Omschrijving:</label>
+          <input name="omschrijving" #newDescription />
         </div>
         
         <div class="field">
-          <label for="omschrijving">Omschrijving:</label>
-          <input name="omschrijving" #newDescription />
+          <label for="configuratie">Configuratie:</label>
+          <textarea name="configuratie" #newSetupString></textarea>
         </div>
         
         <div class="ui positive button right floated" (click)="addSetup(newNaam, newSetupString, newDescription)">Bewaar</div>
