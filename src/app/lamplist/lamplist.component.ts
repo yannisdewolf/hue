@@ -2,8 +2,17 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-lamplist',
-  templateUrl: './lamplist.component.html',
-  styleUrls: ['./lamplist.component.css']
+  template: `
+     <div class="ui items">
+          <app-lamp 
+            *ngFor="let lamp of lamplijst" 
+            [lamp] = "lamp"
+            >
+          </app-lamp>
+      </div>
+  `,
+  styleUrls: ['./lamplist.component.css'],
+  inputs: ['lamplijst']
 })
 export class LamplistComponent implements OnInit {
 

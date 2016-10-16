@@ -1,0 +1,71 @@
+{
+  "1": {
+    "state": {
+      "on": true,
+      "bri": 22,
+      "hue": 22,
+      "sat": 22,
+      "effect": "none",
+      "xy": [
+        0.4059,
+        0.3721
+      ],
+      "ct": 284,
+      "alert": "none",
+      "colormode": "hs",
+      "reachable": true
+    },
+    "type": "Extended color light",
+    "name": "Hal",
+    "modelid": "LCT001",
+    "manufacturername": "Philips",
+    "uniqueid": "00:17:88:01:00:d9:61:e1-0b",
+    "swversion": "5.23.1.13187"
+  },
+  "2": {
+    "state": {
+      "on": true,
+      "bri": 22,
+      "hue": 22,
+      "sat": 22,
+      "effect": "none",
+      "xy": [
+        0.4059,
+        0.3721
+      ],
+      "ct": 284,
+      "alert": "none",
+      "colormode": "hs",
+      "reachable": true
+    },
+    "type": "Extended color light",
+    "name": "Eetkamer",
+    "modelid": "LCT001",
+    "manufacturername": "Philips",
+    "uniqueid": "00:17:88:01:00:d9:61:e1-0b",
+    "swversion": "5.23.1.13187"
+  },
+  "3": {
+    "state": {
+      "on": true,
+      "bri": 22,
+      "hue": 22,
+      "sat": 22,
+      "effect": "none",
+      "xy": [
+        0.4059,
+        0.3721
+      ],
+      "ct": 284,
+      "alert": "none",
+      "colormode": "hs",
+      "reachable": true
+    },
+    "type": "Extended color light",
+    "name": "Eetkamer",
+    "modelid": "LCT001",
+    "manufacturername": "Philips",
+    "uniqueid": "00:17:88:01:00:d9:61:e1-0b",
+    "swversion": "5.23.1.13187"
+  }
+}

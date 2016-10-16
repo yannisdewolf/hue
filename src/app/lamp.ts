@@ -1,13 +1,35 @@
 export class Lamp {
 
-  lampNaam: string;
+  readonly lampNaam: string;
   setup: string;
-  aan: boolean;
+  private on: boolean;
+  readonly lampnummer: string;
 
-  constructor(naam: string, aan: boolean, setup?: string){
+  constructor(naam: string, on: boolean, lampnummer: string, setup?: string){
     this.lampNaam = naam;
     this.setup = setup || "";
-    this.aan = aan;
+    this.on = on;
+    this.lampnummer = lampnummer;
+  }
+
+  setAan() {
+    this.on = true;
+  }
+
+  staatAan() {
+    return this.on;
+  }
+
+  staatUit() {
+    return !this.staatAan();
+  }
+
+  setOff() {
+    this.on = false;
+  }
+
+  beschrijving(): string {
+    return "naam: " + this.lampNaam + " on? " + this.on;
   }
 
 }

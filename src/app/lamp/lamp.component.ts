@@ -1,58 +1,17 @@
 import { Component } from '@angular/core';
 import {Lamp} from "../lamp";
-import {DataService} from "../data/DataService";
+import {Http, Response} from "@angular/http";
 
 @Component({
   selector: 'app-lamp',
-  host: {
-    class: 'card'
-  },
-  inputs: ['lamp', 'configuraties'],
+  inputs: ['lamp'],
+  host: {'class': 'item'},
   template: `  
-   
-    <div class="blurring dimmable image">
-      <div class="ui dimmer">
-        <div class="content">
-          <div class="center">
-            <div class="ui one buttons">
-              <div *ngIf="lamp.aan" >
-                <div class="ui basic red button inverted" (click)="zetUit()">Uit</div>
-              </div>
-              <div *ngIf="!lamp.aan">
-                <div class="ui basic green button inverted" (click)="zetAan()">Aan</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="lamp.aan" >
-        <img class="ui medium image" src="/assets/incandescent-light-bulb-on.png">
-      </div>
-      <div *ngIf="!lamp.aan">
-        <img class="ui medium image" src="/assets/incandescent-light-bulb.png">
-      </div>
+    <div class="image">
+      <img src="/assets/png/incandescent-light-bulb.png">
     </div>
-    
-    <div class="content">
-      <a class="header">{{lamp.lampNaam}}</a>
-    </div>
-    
-    <div class="extra content">
-      Kies configuratie
-      
-      <div class="field">
-          <select class="ui fluid dropdown" #t (change)="callType(t.value)">
-            <option value="">Configuratie</option>
-            <option *ngFor="let mlamp of configuraties" [value]="mlamp">{{mlamp}}</option>
-          </select>
-        </div>
-    </div>
-    
-    <div class="extra content">
-      <a (click)="toonConfig()">
-        <i class="configure icon"></i>
-        {{lamp.setup}}
-      </a>
+    <div class="middle aligned content">
+      <a class="header" (click)="switch()">{{lamp.lampNaam}}</a>
     </div>
     
   `,
@@ -61,32 +20,44 @@ import {DataService} from "../data/DataService";
 export class LampComponent {
 
   lamp: Lamp;
-  configuraties: [string];
+  data: Object;
 
-  constructor(private dataService: DataService) {
+  constructor(public http:Http) {
 
   }
 
-
-
-  getData() {
-    this.dataService
-      .getData()
-      .subscribe((data:string[]) => console.log("data: " + data));
-
-
+  switch(): boolean {
+    if(this.lamp.staatAan()) {
+      this.zetUit();
+    } else {
+      this.zetAan();
+    }
+    return false;
   }
 
   zetAan(): boolean {
-    console.log(`zet lamp ${this.lamp.lampNaam} aan`);
-    this.lamp.aan = true;
-    this.getData();
+
+    this.http.put('http://192.168.1.6/api/newdevloper/lights/' + this.lamp.lampnummer + "/state", {on : true})
+      .subscribe((res: Response) => {
+        this.data = JSON.stringify(res.json());
+        console.log("data from server: " + this.data);
+        console.log(`zet lamp ${this.lamp.lampNaam} aan`);
+        this.lamp.setAan();
+      });
+
+
     return false;
   }
 
   zetUit(): boolean {
-    console.log(`zet lamp ${this.lamp.lampNaam} uit`);
-    this.lamp.aan = false;
+    this.http.put('http://192.168.1.6/api/newdevloper/lights/' + this.lamp.lampnummer + "/state", {on : false})
+      .subscribe((res: Response) => {
+        this.data = JSON.stringify(res.json());
+        console.log("data from server: " + this.data);
+        console.log(`zet lamp ${this.lamp.lampNaam} uit`);
+        this.lamp.setOff();
+      });
+
     return false;
   }
 

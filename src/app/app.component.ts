@@ -1,56 +1,52 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Lamp} from "./lamp";
+import {Http, Response} from "@angular/http";
 
 @Component({
   selector: 'app-root',
   template: `
-    <div class="ui main container">
-
-      
-
-      <app-lamplist></app-lamplist>
-
-      <div class="ui grid">
-       
-        <div class="ui one column row">
-          <app-scene
-            [bestaandeconfigs] = configuraties
-            (onNewConfig)="addconfiguration($event)"  
-          >
-        </app-scene>
-        </div>
-        
-        
-          <div class="ui one column row">
-            <div class="column">
-              <div class="ui special cards">
-                <app-lamp 
-                    *ngFor="let mlamp of lampen"
-                    [lamp]="mlamp"
-                    [configuraties]=configuraties>     
-                </app-lamp>
-              </div>
-            </div>
-          </div>  
-      </div>
-      
-     
-      
-     </div>
+    <div class="ui container">
+      <app-lamplist
+        [lamplijst] = "lampen"
+      >
+      </app-lamplist>
+    
+    </div>
   `
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   lampen: Lamp[];
 
   configuraties: [string];
 
-  constructor() {
-    this.lampen = [
-      new Lamp("Gang", false),
-      new Lamp("Keuken", false),
-      new Lamp("Eetkamer", false)
-    ];
+  data: Object;
+
+
+  ngOnInit(): void {
+    this.getLampen();
+  }
+
+  getLampen() {
+    this.http.request('http://192.168.1.6/api/newdevloper/lights')
+      .subscribe((res: Response) => {
+
+
+        this.data = res.json();
+        var keys = Object.keys(this.data);
+
+        var lampenVanServer = keys.map((value, index) => {
+          var lampVanServer = this.data[value];
+          return new Lamp(lampVanServer["name"], lampVanServer["state"]["on"], value);
+        });
+
+        lampenVanServer.forEach(lamp => console.log(lamp.beschrijving()));
+
+        this.lampen = lampenVanServer;
+      });
+  }
+
+  constructor(public http:Http) {
 
     this.configuraties = [
       'gedimd', 'wit'
