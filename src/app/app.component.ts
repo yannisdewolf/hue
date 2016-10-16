@@ -6,10 +6,18 @@ import {Lamp} from "./lamp";
   template: `
     <div class="ui main container">
 
+      
+
+      <app-lamplist></app-lamplist>
+
       <div class="ui grid">
        
         <div class="ui one column row">
-          <app-scene></app-scene>
+          <app-scene
+            [bestaandeconfigs] = configuraties
+            (onNewConfig)="addconfiguration($event)"  
+          >
+        </app-scene>
         </div>
         
         
@@ -25,6 +33,8 @@ import {Lamp} from "./lamp";
             </div>
           </div>  
       </div>
+      
+     
       
      </div>
   `
@@ -48,7 +58,8 @@ export class AppComponent {
   }
 
   addconfiguration(newconfig: string) {
-
+    console.log(`incoming config: ${newconfig}`)
+    this.configuraties.push(newconfig);
   }
 
 

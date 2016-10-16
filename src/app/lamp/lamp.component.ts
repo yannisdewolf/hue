@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Lamp} from "../lamp";
+import {DataService} from "../data/DataService";
 
 @Component({
   selector: 'app-lamp',
@@ -62,13 +63,24 @@ export class LampComponent {
   lamp: Lamp;
   configuraties: [string];
 
-  constructor() {
+  constructor(private dataService: DataService) {
+
+  }
+
+
+
+  getData() {
+    this.dataService
+      .getData()
+      .subscribe((data:string[]) => console.log("data: " + data));
+
 
   }
 
   zetAan(): boolean {
     console.log(`zet lamp ${this.lamp.lampNaam} aan`);
     this.lamp.aan = true;
+    this.getData();
     return false;
   }
 

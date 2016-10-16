@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter} from '@angular/core';
+import {Output} from "@angular/core/src/metadata/directives";
 
 @Component({
   selector: 'app-scene',
   host: {
     class: 'column'
   },
+  inputs: ['bestaandeconfigs'],
   template: `
     <form class="ui clearing segment form">
         <h3 class="ui header">Configuratie</h3>
@@ -31,10 +33,13 @@ import { Component } from '@angular/core';
 })
 export class SceneComponent {
 
+  @Output() onNewConfig = new EventEmitter<string>();
 
   name: string;
   setupstring: string;
   description: string;
+
+  bestaandeconfigs: [string];
 
   constructor() {
 
@@ -45,5 +50,10 @@ export class SceneComponent {
     this.name = name.value;
     this.setupstring = setupstring.value;
     this.description = description.value;
+
+    console.log(`bestaande configuraties: ${this.bestaandeconfigs}`)
+
+    this.onNewConfig.emit(this.name);
+
   }
 }
