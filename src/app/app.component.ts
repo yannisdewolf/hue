@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Lamp} from "./lamp";
 import {Http, Response} from "@angular/http";
+import {Configuration} from "./config/Configuration";
 
 @Component({
   selector: 'app-root',
@@ -28,9 +29,8 @@ export class AppComponent implements OnInit{
   }
 
   getLampen() {
-    this.http.request('http://192.168.1.6/api/newdevloper/lights')
+    this.http.request(this.config.ServerWithApiUrl + '/lights')
       .subscribe((res: Response) => {
-
 
         this.data = res.json();
         var keys = Object.keys(this.data);
@@ -46,7 +46,10 @@ export class AppComponent implements OnInit{
       });
   }
 
-  constructor(public http:Http) {
+  constructor(public http:Http, private config:Configuration) {
+
+    var serverWithApiUrl = config.ServerWithApiUrl;
+    console.log("server with api url: " + serverWithApiUrl);
 
     this.configuraties = [
       'gedimd', 'wit'

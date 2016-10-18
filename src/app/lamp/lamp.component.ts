@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Lamp} from "../lamp";
 import {Http, Response} from "@angular/http";
+import {Configuration} from "../config/Configuration";
 
 @Component({
   selector: 'app-lamp',
@@ -22,7 +23,7 @@ export class LampComponent {
   lamp: Lamp;
   data: Object;
 
-  constructor(public http:Http) {
+  constructor(public http:Http, private config:Configuration) {
 
   }
 
@@ -37,10 +38,10 @@ export class LampComponent {
 
   zetAan(): boolean {
 
-    this.http.put('http://192.168.1.6/api/newdevloper/lights/' + this.lamp.lampnummer + "/state", {on : true})
+
+    this.http.put(this.config.ServerWithApiUrl+'/lights/' + this.lamp.lampnummer + "/state", {on : true})
       .subscribe((res: Response) => {
-        this.data = JSON.stringify(res.json());
-        console.log("data from server: " + this.data);
+        console.log("data from server: " + res);
         console.log(`zet lamp ${this.lamp.lampNaam} aan`);
         this.lamp.setAan();
       });
@@ -50,10 +51,9 @@ export class LampComponent {
   }
 
   zetUit(): boolean {
-    this.http.put('http://192.168.1.6/api/newdevloper/lights/' + this.lamp.lampnummer + "/state", {on : false})
+    this.http.put(this.config.ServerWithApiUrl +'/lights/' + this.lamp.lampnummer + "/state", {on : false})
       .subscribe((res: Response) => {
-        this.data = JSON.stringify(res.json());
-        console.log("data from server: " + this.data);
+        console.log("data from server: " + res);
         console.log(`zet lamp ${this.lamp.lampNaam} uit`);
         this.lamp.setOff();
       });
