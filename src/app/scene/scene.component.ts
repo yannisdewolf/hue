@@ -1,59 +1,35 @@
-import {Component, EventEmitter} from '@angular/core';
-import {Output} from "@angular/core/src/metadata/directives";
+import { Component, OnInit } from '@angular/core';
+import {Scene} from "../scene";
+import {Http, Response} from "@angular/http";
+import {Configuration} from "../config/Configuration";
 
 @Component({
   selector: 'app-scene',
-  host: {
-    class: 'column'
-  },
-  inputs: ['bestaandeconfigs'],
+  inputs: ['scene'],
   template: `
-    <form class="ui clearing segment form">
-        <h3 class="ui header">Configuratie</h3>
-             
-        <div class="field">
-          <label for="title">Naam:</label>
-          <input name="title" #newNaam>
-        </div>
-        
-        <div class="field">
-          <label for="omschrijving">Omschrijving:</label>
-          <input name="omschrijving" #newDescription />
-        </div>
-        
-        <div class="field">
-          <label for="configuratie">Configuratie:</label>
-          <textarea name="configuratie" #newSetupString></textarea>
-        </div>
-        
-        <div class="ui positive button right floated" (click)="addSetup(newNaam, newSetupString, newDescription)">Bewaar</div>
-      </form>
+    <div (click)="activeer()">{{scene.beschrijving()}} </div>>
   `,
   styleUrls: ['./scene.component.css']
 })
-export class SceneComponent {
+export class SceneComponent implements OnInit {
 
-  @Output() onNewConfig = new EventEmitter<string>();
+  scene: Scene;
 
-  name: string;
-  setupstring: string;
-  description: string;
+  constructor(private http: Http, private config: Configuration) { }
 
-  bestaandeconfigs: [string];
+  ngOnInit() {
+  }
 
-  constructor() {
+  activeer(): boolean {
 
+
+    this.http.put(this.config.ServerWithApiUrl + "/scenes/" + this.scene.reference, {on : true})
+      .subscribe((res: Response) => {
+        console.log("scenedata from server: " + res);
+      });
+
+    return false;
   }
 
 
-  addSetup(name: HTMLInputElement, setupstring: HTMLInputElement, description: HTMLInputElement) {
-    this.name = name.value;
-    this.setupstring = setupstring.value;
-    this.description = description.value;
-
-    console.log(`bestaande configuraties: ${this.bestaandeconfigs}`)
-
-    this.onNewConfig.emit(this.name);
-
-  }
 }

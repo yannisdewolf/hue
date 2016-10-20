@@ -6,13 +6,15 @@ import {Configuration} from "./config/Configuration";
 @Component({
   selector: 'app-root',
   template: `
-    <div class="ui container">
-      <app-lamplist
-        [lamplijst] = "lampen"
-      >
-      </app-lamplist>
-    
+
+    <div class="ui three item menu">
+      <a routerLink="/lampen" class="item" routerLinkActive="active">Lampen</a>
+      <a routerLink="/scenes" class="item" routerLinkActive="active">Scenes</a>
+      <a routerLink="/groups" class="item" routerLinkActive="active">Groups</a>
     </div>
+    <router-outlet></router-outlet>
+
+
   `
 })
 export class AppComponent implements OnInit{
