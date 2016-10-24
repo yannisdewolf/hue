@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import {Kleur} from "../kleur";
+import {DataService} from "../data/DataService";
 
 @Component({
   selector: 'app-kleurtjeskiezer',
@@ -15,25 +16,11 @@ export class KleurtjeskiezerComponent implements OnInit {
 
   kleuren: Kleur[];
 
-  constructor(private http:Http) { }
+  constructor(private http:Http, private dataService: DataService) { }
 
   ngOnInit() {
-
-    this.http.get("/assets/config/kleurtjes.json")
-      .map(res => res.json())
-      .subscribe(data => {
-        var allKeys = Object.keys(data);
-
-
-        var alleData = allKeys.map(key => {
-          var kleur = data[key];
-          return new Kleur(kleur["bri"], kleur["hue"], kleur["sat"], key);
-        });
-        this.kleuren = alleData;
-
-      });
-
-      return false;
+    this.dataService.getKleurtjes().subscribe(kleurtjes => this.kleuren = kleurtjes);
+    return false;
   }
 
 }

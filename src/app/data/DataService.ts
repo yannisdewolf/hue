@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Rx';
 import { Configuration } from '../config/Configuration';
 import {Http, Response} from "@angular/http";
 import {Lamp} from "../lamp";
+import {Kleur} from "../kleur";
 
 @Injectable()
 export class DataService {
@@ -24,6 +25,25 @@ export class DataService {
       .catch(this.handleError);
 
   return t;
+
+  }
+
+  getKleurtjes() : Observable<Kleur[]> {
+
+    return this.http.get("/assets/config/kleurtjes.json")
+      .map(res => res.json())
+      .map(data => {
+        var allKeys = Object.keys(data);
+
+
+        var alleData = allKeys.map(key => {
+          var kleur = data[key];
+          return new Kleur(kleur["bri"], kleur["hue"], kleur["sat"], key);
+        });
+        return alleData;
+
+      }).catch(this.handleError);
+
 
   }
 
