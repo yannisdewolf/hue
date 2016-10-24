@@ -16,6 +16,10 @@ import { SceneComponent } from './scene/scene.component';
 import { GroupComponent } from './group/group.component';
 import { GrouplistComponent } from './grouplist/grouplist.component';
 
+import { SidebarModule } from 'ng2-sidebar';
+import { LampconfigComponent } from './lampconfig/lampconfig.component';
+import { KleurtjeskiezerComponent } from './kleurtjeskiezer/kleurtjeskiezer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,18 +30,23 @@ import { GrouplistComponent } from './grouplist/grouplist.component';
     SceneListComponent,
     SceneComponent,
     GroupComponent,
-    GrouplistComponent
+    GrouplistComponent,
+    LampconfigComponent,
+    KleurtjeskiezerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     JsonpModule,
+    SidebarModule,
     RouterModule.forRoot([
       {path: 'lampen', component: LamplistComponent},
       {path: 'scenes', component: SceneListComponent},
-      {path: 'groups', component: GrouplistComponent}
+      {path: 'groups', component: GrouplistComponent},
+      {path: 'kleurtjes', component: KleurtjeskiezerComponent}
     ])
+
   ],
   providers: [Configuration, DataService],
   bootstrap: [AppComponent]

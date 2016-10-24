@@ -7,7 +7,7 @@ import {Configuration} from "../config/Configuration";
   selector: 'app-group',
   inputs: ['group'],
   template: `
-    <div (click)="activeer()">{{group.beschrijving()}} </div>>
+    <div (click)="activeer()">{{group.beschrijving()}} </div>
   `,
   styleUrls: ['./group.component.css']
 })

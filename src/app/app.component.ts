@@ -7,10 +7,11 @@ import {Configuration} from "./config/Configuration";
   selector: 'app-root',
   template: `
 
-    <div class="ui three item menu">
+    <div class="ui four item menu">
       <a routerLink="/lampen" class="item" routerLinkActive="active">Lampen</a>
       <a routerLink="/scenes" class="item" routerLinkActive="active">Scenes</a>
       <a routerLink="/groups" class="item" routerLinkActive="active">Groups</a>
+      <a routerLink="/kleurtjes" class="item" routerLinkActive="active">Kleurtjes</a>
     </div>
     <router-outlet></router-outlet>
 

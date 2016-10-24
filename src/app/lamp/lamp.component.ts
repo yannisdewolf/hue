@@ -13,6 +13,7 @@ import {Configuration} from "../config/Configuration";
     </div>
     <div class="middle aligned content">
       <a class="header" (click)="switch()">{{lamp.lampNaam}}</a>
+      
     </div>
     
   `,
@@ -23,8 +24,10 @@ export class LampComponent {
   lamp: Lamp;
   data: Object;
 
+  configuratie: string;
+  configuratieDataGeladen: boolean;
   constructor(public http:Http, private config:Configuration) {
-
+    this.configuratieDataGeladen = false;
   }
 
   switch(): boolean {
@@ -61,10 +64,6 @@ export class LampComponent {
     return false;
   }
 
-  toonConfig(): boolean {
-    console.log(`configuratie van ${this.lamp.lampNaam}`);
-    return false;
-  }
 
   callType(value: string) : boolean {
     this.lamp.setup = value;
