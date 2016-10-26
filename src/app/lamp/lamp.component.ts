@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Lamp} from "../lamp";
 import {Http, Response} from "@angular/http";
 import {Configuration} from "../config/Configuration";
+import {DataService} from "../data/DataService";
+import {Kleur} from "../kleur";
 
 @Component({
   selector: 'app-lamp',
@@ -13,21 +15,57 @@ import {Configuration} from "../config/Configuration";
     </div>
     <div class="middle aligned content">
       <a class="header" (click)="switch()">{{lamp.lampNaam}}</a>
-      
+      <div class="content" >
+        
+        <a *ngFor="let kleur of kleuren" (click)="switchKleur(kleur)"><span class="kleur">{{kleur.naam}}</span> </a>
+      </div>
+      <div class="content">
+      Helderheid
+        <button class="ui button" (click)="increase()">+</button>
+        <button class="ui button" (click)="decrease()">-</button>
+      </div>
     </div>
     
   `,
   styleUrls: ['./lamp.component.css']
 })
-export class LampComponent {
+export class LampComponent implements OnInit{
+
+  kleuren: Array<Kleur>;
+
+  ngOnInit(): void {
+
+    this.dataService.getKleurtjes().subscribe(kleurtjes => this.kleuren = kleurtjes);
+  }
 
   lamp: Lamp;
   data: Object;
 
   configuratie: string;
   configuratieDataGeladen: boolean;
-  constructor(public http:Http, private config:Configuration) {
+  constructor(public http:Http, private config:Configuration,  private dataService: DataService) {
     this.configuratieDataGeladen = false;
+  }
+
+  increase(): boolean {
+
+    this.http.put(this.config.ServerWithApiUrl+'/lights/' + this.lamp.lampnummer + "/state",
+      {"bri_inc":32, "transitiontime":5 })
+      .subscribe((res: Response) => {
+        console.log("response: " + res);
+      });
+
+    return false;
+  }
+
+  decrease(): boolean {
+    this.http.put(this.config.ServerWithApiUrl+'/lights/' + this.lamp.lampnummer + "/state",
+      {"bri_inc":-32, "transitiontime":5 })
+      .subscribe((res: Response) => {
+        console.log("response: " + res);
+      });
+
+    return false;
   }
 
   switch(): boolean {
@@ -36,6 +74,20 @@ export class LampComponent {
     } else {
       this.zetAan();
     }
+    return false;
+  }
+
+  switchKleur(kleur: Kleur): boolean{
+    console.log("kleur gekozen " + kleur.naam);
+
+    this.http.put(this.config.ServerWithApiUrl+'/lights/' + this.lamp.lampnummer + "/state",
+      {bri : kleur.bri, hue: kleur.hue, sat: kleur.sat, xy: kleur.xy, ct: kleur.ct, colormode: kleur.colormode})
+      .subscribe((res: Response) => {
+        console.log("response: " + res);
+      });
+
+
+
     return false;
   }
 
@@ -52,6 +104,8 @@ export class LampComponent {
 
     return false;
   }
+
+
 
   zetUit(): boolean {
     this.http.put(this.config.ServerWithApiUrl +'/lights/' + this.lamp.lampnummer + "/state", {on : false})

@@ -44,7 +44,7 @@ export class GrouplistComponent implements OnInit {
   }
 
   getGroups() {
-    this.http.request(this.config.ServerWithApiUrl + '/lights')
+    this.http.request(this.config.ServerWithApiUrl + '/groups')
       .subscribe((res: Response) => {
 
         var data = res.json();

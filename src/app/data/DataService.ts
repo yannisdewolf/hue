@@ -38,7 +38,14 @@ export class DataService {
 
         var alleData = allKeys.map(key => {
           var kleur = data[key];
-          return new Kleur(kleur["bri"], kleur["hue"], kleur["sat"], key);
+          return new Kleur(
+              kleur["bri"],
+              kleur["hue"],
+              kleur["sat"],
+              key,
+              kleur["xy"],
+              kleur["ct"],
+              kleur["colormode"]);
         });
         return alleData;
 

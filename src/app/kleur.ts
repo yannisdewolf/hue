@@ -1,6 +1,12 @@
 export class Kleur {
 
-  constructor(public  bri: number, public hue: number, public sat: number, public naam: string ) {
+  constructor(public  bri: number,
+              public hue: number,
+              public sat: number,
+              public naam: string,
+              public xy: number[],
+              public ct: number,
+              public colormode: string) {
 
   }
 

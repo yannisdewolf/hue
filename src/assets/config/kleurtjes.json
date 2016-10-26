@@ -1,22 +1,67 @@
 {
   "wit": {
     "bri": 91,
-    "hue": 34429,
-    "sat": 227
+    "hue": 34050,
+    "sat": 245,
+    "effect": "none",
+    "xy": [
+      0.3162,
+      0.3318
+    ],
+    "ct": 156,
+    "alert": "none",
+    "colormode": "xy"
   },
   "groen": {
-     "bri": 91,
-    "hue": 25653,
-    "sat": 254
+    "bri": 91,
+    "hue": 42785,
+    "sat": 252,
+    "effect": "none",
+    "xy": [
+      0.408,
+      0.517
+    ],
+    "ct": 153,
+    "alert": "none",
+    "colormode": "xy"
   },
   "blauw": {
     "bri": 91,
     "hue": 25653,
-    "sat": 254
+    "sat": 254,
+    "effect": "none",
+    "xy": [
+      0.2167,
+      0.1376
+    ],
+    "ct": 289,
+    "alert": "none",
+    "colormode": "xy"
   },
   "geel": {
-    "bri": 91,
-    "hue": 20296,
-    "sat": 252
+    "bri": 225,
+    "hue": 13500,
+    "sat": 254,
+    "effect": "none",
+    "xy": [
+      0.5347,
+      0.4253
+    ],
+    "ct": 500,
+    "alert": "none",
+    "colormode": "hs"
+  },
+  "relax": {
+    "bri": 144,
+    "hue": 13401,
+    "sat": 204,
+    "effect": "none",
+    "xy": [
+      0.5052,
+      0.4152
+    ],
+    "ct": 450,
+    "alert": "none",
+    "colormode": "xy"
   }
 }
