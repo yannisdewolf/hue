@@ -1,0 +1,93 @@
+{
+  "1": {
+    "name": "Timer",
+    "description": "",
+    "command": {
+      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "body": {
+        "scene": "02b12e930-off-0"
+      },
+      "method": "PUT"
+    },
+    "localtime": "W127/T19:52:00",
+    "time": "PT00:01:00",
+    "created": "2014-06-23T13:39:16",
+    "status": "disabled",
+    "autodelete": false,
+    "starttime": "2014-06-23T13:39:16"
+  },
+  "2": {
+    "name": "Alarm",
+    "description": "",
+    "command": {
+      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "body": {
+        "scene": "02b12e930-off-0"
+      },
+      "method": "PUT"
+    },
+    "localtime": "W106/T19:52:00",
+    "created": "2014-06-23T13:38:57",
+    "status": "disabled",
+    "autodelete": false
+  }, "3": {
+    "name": "Alarm",
+    "description": "",
+    "command": {
+      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "body": {
+        "scene": "02b12e930-off-0"
+      },
+      "method": "PUT"
+    },
+    "localtime": "W100/T19:52:00",
+    "created": "2014-06-23T13:38:57",
+    "status": "disabled",
+    "autodelete": false
+  },
+  "4": {
+    "name": "Alarm",
+    "description": "",
+    "command": {
+      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "body": {
+        "scene": "02b12e930-off-0"
+      },
+      "method": "PUT"
+    },
+    "localtime": "W001/T19:52:00",
+    "created": "2014-06-23T13:38:57",
+    "status": "disabled",
+    "autodelete": false
+  },
+  "5": {
+    "name": "Alarm",
+    "description": "",
+    "command": {
+      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "body": {
+        "scene": "02b12e930-off-0"
+      },
+      "method": "PUT"
+    },
+    "localtime": "W010/T19:52:00",
+    "created": "2014-06-23T13:38:57",
+    "status": "disabled",
+    "autodelete": false
+  },
+  "6": {
+    "name": "Alarm",
+    "description": "",
+    "command": {
+      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "body": {
+        "scene": "02b12e930-off-0"
+      },
+      "method": "PUT"
+    },
+    "localtime": "W124/T19:52:00",
+    "created": "2014-06-23T13:38:57",
+    "status": "disabled",
+    "autodelete": false
+  }
+}

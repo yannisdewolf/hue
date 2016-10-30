@@ -1,13 +1,16 @@
-export class state {
-  on: boolean;
-  bri: number;
-  hue: number;
-  sat: number;
+export class State {
 
-  effect: string;
 
-  ct: number;
-  alert: string;
-  colormode: string;
+  constructor(public on: boolean,
+              public bri: number,
+              public hue: number,
+              public sat: number,
+              public effect: string,
+              public ct: number,
+              public alert: string,
+              public colormode: string) {
+
+  }
+
 
 }

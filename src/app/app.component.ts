@@ -7,8 +7,9 @@ import {Configuration} from "./config/Configuration";
   selector: 'app-root',
   template: `
 
-    <div class="ui four item menu">
+    <div class="ui five item menu">
       <a routerLink="/lampen" class="item" routerLinkActive="active">Lampen</a>
+      <a routerLink="/schedules" class="item" routerLinkActive="active">Schedules</a>
       <a routerLink="/scenes" class="item" routerLinkActive="active">Scenes</a>
       <a routerLink="/groups" class="item" routerLinkActive="active">Groups</a>
       <a routerLink="/kleurtjes" class="item" routerLinkActive="active">Kleurtjes</a>

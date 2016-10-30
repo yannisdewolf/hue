@@ -29,22 +29,18 @@ import {Kleur} from "../kleur";
   `,
   styleUrls: ['./lamp.component.css']
 })
-export class LampComponent implements OnInit{
+export class LampComponent implements OnInit {
 
   kleuren: Array<Kleur>;
 
   ngOnInit(): void {
-
     this.dataService.getKleurtjes().subscribe(kleurtjes => this.kleuren = kleurtjes);
   }
 
   lamp: Lamp;
   data: Object;
 
-  configuratie: string;
-  configuratieDataGeladen: boolean;
   constructor(public http:Http, private config:Configuration,  private dataService: DataService) {
-    this.configuratieDataGeladen = false;
   }
 
   increase(): boolean {
@@ -80,6 +76,8 @@ export class LampComponent implements OnInit{
   switchKleur(kleur: Kleur): boolean{
     console.log("kleur gekozen " + kleur.naam);
 
+
+
     this.http.put(this.config.ServerWithApiUrl+'/lights/' + this.lamp.lampnummer + "/state",
       {bri : kleur.bri, hue: kleur.hue, sat: kleur.sat, xy: kleur.xy, ct: kleur.ct, colormode: kleur.colormode})
       .subscribe((res: Response) => {
@@ -92,8 +90,6 @@ export class LampComponent implements OnInit{
   }
 
   zetAan(): boolean {
-
-
     this.http.put(this.config.ServerWithApiUrl+'/lights/' + this.lamp.lampnummer + "/state", {on : true})
       .subscribe((res: Response) => {
         console.log("data from server: " + res);
@@ -108,12 +104,11 @@ export class LampComponent implements OnInit{
 
 
   zetUit(): boolean {
-    this.http.put(this.config.ServerWithApiUrl +'/lights/' + this.lamp.lampnummer + "/state", {on : false})
-      .subscribe((res: Response) => {
-        console.log("data from server: " + res);
-        console.log(`zet lamp ${this.lamp.lampNaam} uit`);
-        this.lamp.setOff();
-      });
+    this.dataService.zetUit(this.lamp.lampnummer).subscribe((res: Response) => {
+      console.log("data from server: " + res);
+      console.log(`zet lamp ${this.lamp.lampNaam} uit`);
+      this.lamp.setOff();
+    });
 
     return false;
   }

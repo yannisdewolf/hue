@@ -19,6 +19,9 @@ import { GrouplistComponent } from './grouplist/grouplist.component';
 import { SidebarModule } from 'ng2-sidebar';
 import { LampconfigComponent } from './lampconfig/lampconfig.component';
 import { KleurtjeskiezerComponent } from './kleurtjeskiezer/kleurtjeskiezer.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { SchedulelistComponent } from './schedulelist/schedulelist.component';
+import { ScheduleitemComponent } from './scheduleitem/scheduleitem.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { KleurtjeskiezerComponent } from './kleurtjeskiezer/kleurtjeskiezer.comp
     GroupComponent,
     GrouplistComponent,
     LampconfigComponent,
-    KleurtjeskiezerComponent
+    KleurtjeskiezerComponent,
+    SchedulelistComponent,
+    ScheduleitemComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +49,14 @@ import { KleurtjeskiezerComponent } from './kleurtjeskiezer/kleurtjeskiezer.comp
       {path: 'lampen', component: LamplistComponent},
       {path: 'scenes', component: SceneListComponent},
       {path: 'groups', component: GrouplistComponent},
-      {path: 'kleurtjes', component: KleurtjeskiezerComponent}
+      {path: 'kleurtjes', component: KleurtjeskiezerComponent},
+      {path: 'schedules', component: SchedulelistComponent},
+      {path: '', component: LamplistComponent}
+
     ])
 
   ],
-  providers: [Configuration, DataService],
+  providers: [Configuration, DataService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

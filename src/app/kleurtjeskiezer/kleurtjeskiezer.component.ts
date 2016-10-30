@@ -20,7 +20,6 @@ export class KleurtjeskiezerComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getKleurtjes().subscribe(kleurtjes => this.kleuren = kleurtjes);
-    return false;
   }
 
 }

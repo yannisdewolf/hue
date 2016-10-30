@@ -40,16 +40,16 @@
   },
   "geel": {
     "bri": 225,
-    "hue": 13500,
+    "hue": 12750,
     "sat": 254,
     "effect": "none",
     "xy": [
-      0.5347,
-      0.4253
+      0.5425,
+      0.4196
     ],
     "ct": 500,
     "alert": "none",
-    "colormode": "hs"
+    "colormode": "xy"
   },
   "relax": {
     "bri": 144,
@@ -61,6 +61,19 @@
       0.4152
     ],
     "ct": 450,
+    "alert": "none",
+    "colormode": "xy"
+  },
+  "ontbijt": {
+    "bri": 254,
+    "hue": 15338,
+    "sat": 121,
+    "effect": "none",
+    "xy": [
+      0.4448,
+      0.4066
+    ],
+    "ct": 343,
     "alert": "none",
     "colormode": "xy"
   }
