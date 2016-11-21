@@ -50,6 +50,7 @@ export class LamplistComponent implements OnInit {
         this.lampen = lampenVanServer;
       });
   }
+  //commentaar
 
   constructor(public http:Http, private config:Configuration) {
 
