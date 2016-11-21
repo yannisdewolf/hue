@@ -51,6 +51,7 @@ export class LamplistComponent implements OnInit {
         this.lampen = lampenVanServer;
       });
   }
+  //op master
   //commentaar
 
   constructor(public http:Http, private config:Configuration, private fb: AngularFire) {
