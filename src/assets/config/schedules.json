@@ -1,93 +1,98 @@
 {
   "1": {
-    "name": "Timer",
-    "description": "",
+    "name": "wd-Breakfast-on",
+    "description": "Start ontbijt op een  werkdag",
     "command": {
-      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "address": "/api/newdevloper/lights/3/state",
       "body": {
-        "scene": "02b12e930-off-0"
+        "on": true
       },
       "method": "PUT"
     },
-    "localtime": "W127/T19:52:00",
-    "time": "PT00:01:00",
-    "created": "2014-06-23T13:39:16",
-    "status": "disabled",
-    "autodelete": false,
-    "starttime": "2014-06-23T13:39:16"
+    "localtime": "W124/T06:15:00",
+    "time": "W124/T05:15:00",
+    "created": "2015-11-01T19:42:25",
+    "status": "enabled",
+    "recycle": false
   },
   "2": {
-    "name": "Alarm",
-    "description": "",
+    "name": "wd-Breakfast-off",
+    "description": "Eind ontbijt op werkdag",
     "command": {
-      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "address": "/api/newdevloper/lights/3/state",
       "body": {
-        "scene": "02b12e930-off-0"
+        "on": false
       },
       "method": "PUT"
     },
-    "localtime": "W106/T19:52:00",
-    "created": "2014-06-23T13:38:57",
-    "status": "disabled",
-    "autodelete": false
-  }, "3": {
-    "name": "Alarm",
-    "description": "",
+    "localtime": "W124/T07:15:00",
+    "time": "W124/T06:15:00",
+    "created": "2015-11-01T19:42:25",
+    "status": "enabled",
+    "recycle": false
+  },
+  "3": {
+    "name": "Ochtend",
+    "description": "L_07_1Zmsl_01",
     "command": {
-      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "address": "/api/326946bb3e802c0f2b7e7dc33c660d97/groups/7/action",
       "body": {
-        "scene": "02b12e930-off-0"
+        "scene": "WoIs7RmhhW4n6u0"
       },
       "method": "PUT"
     },
-    "localtime": "W100/T19:52:00",
-    "created": "2014-06-23T13:38:57",
-    "status": "disabled",
-    "autodelete": false
+    "localtime": "W124/T06:45:00",
+    "time": "W124/T05:45:00",
+    "created": "2016-09-29T20:07:25",
+    "status": "enabled",
+    "recycle": false
   },
   "4": {
-    "name": "Alarm",
-    "description": "",
+    "name": "Ochtend uit",
+    "description": "L_07_j3Qfj_01",
     "command": {
-      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "address": "/api/326946bb3e802c0f2b7e7dc33c660d97/groups/7/action",
       "body": {
-        "scene": "02b12e930-off-0"
+        "scene": "-M1iR1OH5Cbjg8-"
       },
       "method": "PUT"
     },
-    "localtime": "W001/T19:52:00",
-    "created": "2014-06-23T13:38:57",
-    "status": "disabled",
-    "autodelete": false
+    "localtime": "W124/T07:30:00",
+    "time": "W124/T06:30:00",
+    "created": "2016-09-29T20:07:51",
+    "status": "enabled",
+    "recycle": false
   },
   "5": {
-    "name": "Alarm",
-    "description": "",
+    "name": "Ochtend",
+    "description": "L_07_1Zmsl_02",
     "command": {
-      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "address": "/api/326946bb3e802c0f2b7e7dc33c660d97/groups/6/action",
       "body": {
-        "scene": "02b12e930-off-0"
+        "scene": "Td-8-m-bYTtAE98"
       },
       "method": "PUT"
     },
-    "localtime": "W010/T19:52:00",
-    "created": "2014-06-23T13:38:57",
-    "status": "disabled",
-    "autodelete": false
+    "localtime": "W124/T06:45:00",
+    "time": "W124/T05:45:00",
+    "created": "2016-09-29T20:07:25",
+    "status": "enabled",
+    "recycle": false
   },
   "6": {
-    "name": "Alarm",
-    "description": "",
+    "name": "Ochtend uit",
+    "description": "L_07_j3Qfj_02",
     "command": {
-      "address": "/api/s95jtYH8HUVWNkCO/groups/0/action",
+      "address": "/api/326946bb3e802c0f2b7e7dc33c660d97/groups/6/action",
       "body": {
-        "scene": "02b12e930-off-0"
+        "scene": "LGGtnApBnmfFLGR"
       },
       "method": "PUT"
     },
-    "localtime": "W124/T19:52:00",
-    "created": "2014-06-23T13:38:57",
-    "status": "disabled",
-    "autodelete": false
+    "localtime": "W124/T07:30:00",
+    "time": "W124/T06:30:00",
+    "created": "2016-09-29T20:07:51",
+    "status": "enabled",
+    "recycle": false
   }
 }

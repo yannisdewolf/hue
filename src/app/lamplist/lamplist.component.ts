@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Response, Http} from "@angular/http";
 import {Lamp} from "../lamp";
 import {Configuration} from "../config/Configuration";
+import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 @Component({
   selector: 'app-lamplist',
@@ -51,7 +52,10 @@ export class LamplistComponent implements OnInit {
       });
   }
 
-  constructor(public http:Http, private config:Configuration) {
+  constructor(public http:Http, private config:Configuration, private fb: AngularFire) {
+    var any: FirebaseListObservable<any> = this.fb.database.list('courses');
+
+    any.subscribe(val => console.log(val));
 
     var serverWithApiUrl = config.ServerWithApiUrl;
     console.log("server with api url: " + serverWithApiUrl);

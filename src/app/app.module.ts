@@ -22,6 +22,8 @@ import { KleurtjeskiezerComponent } from './kleurtjeskiezer/kleurtjeskiezer.comp
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { SchedulelistComponent } from './schedulelist/schedulelist.component';
 import { ScheduleitemComponent } from './scheduleitem/scheduleitem.component';
+import {AngularFireModule} from "angularfire2";
+import {firebaseConfig} from "../environments/firebase.config";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { ScheduleitemComponent } from './scheduleitem/scheduleitem.component';
     ScheduleitemComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
     FormsModule,
     HttpModule,

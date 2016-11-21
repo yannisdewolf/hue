@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {Lamp} from "./lamp";
 import {Http, Response} from "@angular/http";
 import {Configuration} from "./config/Configuration";
+import {AngularFire} from "angularfire2";
 
 @Component({
   selector: 'app-root',
   template: `
 
-    <div class="ui five item menu">
+    <div class="ui fivev item menu">
       <a routerLink="/lampen" class="item" routerLinkActive="active">Lampen</a>
       <a routerLink="/schedules" class="item" routerLinkActive="active">Schedules</a>
       <a routerLink="/scenes" class="item" routerLinkActive="active">Scenes</a>
@@ -51,6 +52,8 @@ export class AppComponent implements OnInit{
   }
 
   constructor(public http:Http, private config:Configuration) {
+
+
 
     var serverWithApiUrl = config.ServerWithApiUrl;
     console.log("server with api url: " + serverWithApiUrl);
