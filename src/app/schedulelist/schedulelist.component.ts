@@ -7,9 +7,7 @@ import {Schedule} from "../schedule";
   template: `
     <div>SCHEDULE LIST</div>
     <div *ngFor="let sched of schedules">
-      Dagen aan: {{sched.getdates()}}
-       -- {{sched.binairevoorstelling}} -- {{sched.localtime}}
-    
+      Dagen aan: {{sched.getEerstvolgendeDagen()}} -- {{sched.localtime}}
     </div>
   `,
   styleUrls: ['./schedulelist.component.css']
